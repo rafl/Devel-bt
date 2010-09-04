@@ -143,6 +143,7 @@ register_segv_handler (char *gdb, char *perl)
     strncpy(perl_path, perl, sizeof(perl_path));
 
     signal(SIGILL, sighandler);
+    signal(SIGFPE, sighandler);
     signal(SIGBUS, sighandler);
     signal(SIGSEGV, sighandler);
     signal(SIGTRAP, sighandler);
