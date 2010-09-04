@@ -122,7 +122,7 @@ backtrace ()
         _exit(0);
     }
     else if (pid == (pid_t)-1) {
-        perror("unable to fork off gdb");
+        perror("unable to fork");
         return;
     }
 
