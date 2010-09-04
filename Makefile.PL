@@ -1,5 +1,11 @@
-use inc::Module::Install;
+use ExtUtils::MakeMaker;
 
-all_from 'lib/Devel/bt.pm';
+# NOTE:
+# this is a very simple Makefile.PL i only use to build the distribution locally
+# while working on it the real Makefile.PL, with all required information like
+# dependencies, is generated later by Dist::Zilla
 
-WriteAll;
+WriteMakefile(
+    NAME => 'Devel::bt',
+    VERSION_FROM => 'lib/Devel/bt.pm',
+);
