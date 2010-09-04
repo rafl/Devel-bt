@@ -2,10 +2,7 @@ use strict;
 use warnings;
 
 package Devel::bt;
-
-=head1 NAME
-
-Devel::bt - Automatic gdb backtraces on errors
+# ABSTRACT: Automatic gdb backtraces on errors
 
 =head1 SYNOPSIS
 
