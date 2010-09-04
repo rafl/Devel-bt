@@ -156,8 +156,14 @@ use XSLoader;
 use Carp 'croak';
 use File::Which 'which';
 
-our $VERSION = '0.01';
-XSLoader::load(__PACKAGE__, $VERSION);
+XSLoader::load(
+    __PACKAGE__,
+    # we need to be careful not to touch $VERSION at compile time, otherwise
+    # DynaLoader will assume it's set and check against it, which will cause
+    # fail when being run in the checkout without dzil having set the actual
+    # $VERSION
+    exists $Devel::bt::{VERSION} ? ${ $Devel::bt::{VERSION} } : (),
+);
 
 sub DB::DB { }
 

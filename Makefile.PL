@@ -7,5 +7,4 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME => 'Devel::bt',
-    VERSION_FROM => 'lib/Devel/bt.pm',
 );
