@@ -80,7 +80,7 @@ stack_trace (char **args)
                     buffer[idx++] = c;
                     if ((c == '\n') || (c == '\r')) {
                         buffer[idx] = 0;
-                        fprintf(stdout, "%s", buffer);
+                        write(1, buffer, strlen(buffer));
                         state = 0;
                         idx = 0;
                     }
