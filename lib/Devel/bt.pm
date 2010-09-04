@@ -70,19 +70,10 @@ sent to it, the signal handler will be called, and fork off a process running
 C<gdb> and generating a backtrace of the running program, which will then be
 printed to standard output.
 
-=head1 AUTHOR
 
-Florian Ragwitz E<lt>rafl@debian.orgE<gt>
+=head1 ACKNOWLEDGEMENTS
 
-=head1 COPYRIGHT AND LICENSE
-
-This software is Copyright (c) 2010 by Florian Ragwitz.
-
-This is free software, licensed under:
-
-  The GNU Lesser General Public License, Version 2.1, February 1999
-
-It is based on parts of C<glib>, which is written by:
+This software is based on parts of C<glib>, which is written by:
 
 =over 4
 
@@ -148,7 +139,7 @@ and others
 
 =back
 
-C<glib> is also licensed under The GNU Lesser General Public License, Version 2.
+C<glib> is licensed under The GNU Lesser General Public License, Version 2.
 
 =cut
 
