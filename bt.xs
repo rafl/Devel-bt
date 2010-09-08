@@ -2,6 +2,10 @@
 #include "perl.h"
 #include "XSUB.h"
 
+#ifndef PERL_UNUSED_ARG
+# define PERL_UNUSED_ARG(x) ((void)x)
+#endif
+
 static int signals[] = {
     SIGILL,
     SIGFPE,
