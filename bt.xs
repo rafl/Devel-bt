@@ -182,8 +182,8 @@ backtrace ()
 static void
 sighandler (int sig) {
     PERL_UNUSED_ARG(sig);
-    backtrace();
     register_sighandler(SIG_DFL);
+    backtrace();
     abort();
 }
 
