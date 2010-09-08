@@ -1,3 +1,6 @@
+0.05  Wed, 08 Sep 2010 10:13:42 +0200
+  * Improve compatibility with old perl versions.
+
 0.04  Wed, 08 Sep 2010 04:33:22 +0200
   * Avoid infinite recursions caused by errors in the signal handler itself by
     unregistering our handlers as early as possible.
