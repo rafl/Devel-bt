@@ -1,3 +1,7 @@
+0.04  Wed, 08 Sep 2010 04:33:22 +0200
+  * Avoid infinite recursions caused by errors in the signal handler itself by
+    unregistering our handlers as early as possible.
+
 0.03  Wed, 08 Sep 2010 04:00:54 +0200
   * abort() after generating the stack trace. exit(0) after a fatal error was
     just wrong.
