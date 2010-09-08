@@ -2,7 +2,26 @@
 #include "perl.h"
 #include "XSUB.h"
 
+static int signals[] = {
+    SIGILL,
+    SIGFPE,
+    SIGBUS,
+    SIGSEGV,
+    SIGTRAP,
+    SIGABRT,
+    SIGQUIT
+};
+
 static char perl_path[PATH_MAX], gdb_path[PATH_MAX];
+
+static void
+register_sighandler (void (*handler)(int))
+{
+    unsigned int i;
+    for (i = 0; i < sizeof(signals) / sizeof(signals[0]); i++) {
+        signal(signals[i], handler);
+    }
+}
 
 static void
 stack_trace (char **args)
@@ -164,7 +183,8 @@ static void
 sighandler (int sig) {
     PERL_UNUSED_ARG(sig);
     backtrace();
-    _exit(0);
+    register_sighandler(SIG_DFL);
+    abort();
 }
 
 static void
@@ -172,14 +192,7 @@ register_segv_handler (char *gdb, char *perl)
 {
     strncpy(gdb_path, gdb, sizeof(gdb_path));
     strncpy(perl_path, perl, sizeof(perl_path));
-
-    signal(SIGILL, sighandler);
-    signal(SIGFPE, sighandler);
-    signal(SIGBUS, sighandler);
-    signal(SIGSEGV, sighandler);
-    signal(SIGTRAP, sighandler);
-    signal(SIGABRT, sighandler);
-    signal(SIGQUIT, sighandler);
+    register_sighandler(sighandler);
 }
 
 MODULE = Devel::bt  PACKAGE = Devel::bt
