@@ -87,7 +87,7 @@ stack_trace (char **args)
     FD_ZERO(&fdset);
     FD_SET(out_fd[0], &fdset);
 
-    write(in_fd[1], "backtrace\n", 10);
+    write(in_fd[1], "thread apply all backtrace\n", 27);
     write(in_fd[1], "quit\n", 5);
 
     idx = 0;
