@@ -23,6 +23,7 @@ for my $signal (@signals) {
     use Capture::Tiny 'capture';
     my ($stdout) = capture { system @cmd };
 
+    is($?, $signum & 127, "Process died of signal $signum");
     like $stdout, qr/\bperl_run\b/, "perl backtrace for $signal";
 }
 

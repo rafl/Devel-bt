@@ -189,9 +189,8 @@ backtrace ()
 
 static void
 signal_handler (int sig) {
-    PERL_UNUSED_ARG(sig);
     backtrace();
-    abort();
+    raise(sig);
 }
 
 static void
