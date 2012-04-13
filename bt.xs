@@ -22,8 +22,12 @@ static void
 register_sighandler (void (*handler)(int))
 {
     unsigned int i;
+    struct sigaction action;
+    Zero(&action, 1, struct sigaction);
+    action.sa_handler = handler;
+    action.sa_flags = SA_RESETHAND;
     for (i = 0; i < sizeof(signals) / sizeof(signals[0]); i++) {
-        signal(signals[i], handler);
+        sigaction(signals[i], &action, NULL);
     }
 }
 
@@ -186,7 +190,6 @@ backtrace ()
 static void
 signal_handler (int sig) {
     PERL_UNUSED_ARG(sig);
-    register_sighandler(SIG_DFL);
     backtrace();
     abort();
 }
